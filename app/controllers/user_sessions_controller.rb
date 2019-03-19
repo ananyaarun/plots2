@@ -146,9 +146,8 @@ class UserSessionsController < ApplicationController
                 end
               end
             else
-              # Login failed; probably bad password.
-              # Errors will display on login form:
-              render action: 'new'
+              flash[:warning] = "Looks like you entered the wrong password. Please enter the correct password."
+              redirect_to '/login'              
             end
           end
         else # not a native user
